@@ -1,8 +1,10 @@
 package hotel.management.system;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ActionListener{
     JLabel l1,l2;
     JTextField t1;
     JPasswordField t2;
@@ -28,12 +30,14 @@ public class Login extends JFrame {
         b1.setForeground(Color.WHITE);
         b1.setBounds(40,150,120,30);
         add(b1);
+        b1.addActionListener(this);
         
          b2=new JButton("Cancel");
         b2.setBackground(Color.BLACK);
         b2.setForeground(Color.WHITE);
         b2.setBounds(180,150,120,30);
         add(b2);
+        b2.addActionListener(this); 
                 
                 getContentPane().setBackground(Color.WHITE);
         
@@ -41,9 +45,37 @@ public class Login extends JFrame {
         setLayout(null);
         setVisible(true);
     }
+    
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource()==b1)
+        {
+            String username=t1.getText();
+            String password=t2.getText();
+            Conn c=new Conn();
+            String str="select * from login where username= '"+username+"' and password='"+password+"'";
+            try{
+               ResultSet rs= c.s.executeQuery(str);
+               if(rs.next())
+               {
+                   new Dashboard().setVisible(true);
+                   this.setVisible(false);
+               }
+               else {
+                   JOptionPane.showMessageDialog(null,"Invalid Username or Password");
+                   this.setVisible(false);
+               }
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }else if(ae.getSource()==b2)
+        {
+            System.exit(0);
+        }
+    }
     public static void main(String[] args)
     {
-        new Login();
+      new Login();
     }
 
    
