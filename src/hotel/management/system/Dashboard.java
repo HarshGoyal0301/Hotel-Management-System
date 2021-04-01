@@ -3,7 +3,9 @@ package hotel.management.system;
 
 import java.awt.*;
 import javax.swing.*;
-public class Dashboard extends JFrame {
+import java.awt.event.*;
+import java.sql.*;
+public class Dashboard extends JFrame implements ActionListener{
     JMenuBar mb;
     JMenu m1,m2;
     JMenuItem i1,i2,i3;
@@ -14,15 +16,18 @@ public class Dashboard extends JFrame {
          add(mb);
          m1=new JMenu("Hotel Management");
          mb.add(m1);
-          m2=new JMenu("Admin");
+          m2=new JMenu("ADMIN");
          mb.add(m2);
          
          i1=new JMenuItem("RECEPTION");
+         i1.addActionListener(this);
          m1.add(i1);
          i2=new JMenuItem("Add Employee");
+         i2.addActionListener(this);
          m2.add(i2);
          
           i3=new JMenuItem("Add Room");
+          i3.addActionListener(this);
          m2.add(i3);
          
          setLayout(null);
@@ -44,6 +49,27 @@ public class Dashboard extends JFrame {
          setVisible(true);
          
      }
+    public void ActionPerformed(ActionEvent ae){
+        String str="select username from login ";
+        try{
+            Conn c=new Conn();
+            ResultSet rs=c.s.executeQuery(str);
+            
+        
+        if((rs.getString("Username")=="Manager")&&ae.getActionCommand().equals("RECEPTION"))
+        {
+            
+        }else if((rs.getString("Username")=="Manager")&&ae.getActionCommand().equals("Add Employee"))
+        {
+           // new AddEmployee.setVisible(true);
+        }
+        else if(ae.getActionCommand().equals("Add Room"))
+        {
+          // new AddRoom.setVisible(true);
+        }
+       }catch(Exception e){
+       System.out.println(e);}
+    }
      public static void main(String args[])
      {
          new Dashboard().setVisible(true);
