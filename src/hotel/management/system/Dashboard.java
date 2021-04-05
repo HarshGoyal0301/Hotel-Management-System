@@ -49,23 +49,24 @@ public class Dashboard extends JFrame implements ActionListener{
          setVisible(true);
          
      }
-    public void ActionPerformed(ActionEvent ae){
-        String str="select username from login ";
+    public void actionPerformed(ActionEvent ae){
+       // String str="select username from login ";
         try{
             Conn c=new Conn();
-            ResultSet rs=c.s.executeQuery(str);
+       //     ResultSet rs=c.s.executeQuery(str);
+       //(rs.getString("Username")=="Manager")&&
             
         
-        if((rs.getString("Username")=="Manager")&&ae.getActionCommand().equals("RECEPTION"))
+        if(ae.getActionCommand().equals("RECEPTION"))
         {
             
-        }else if((rs.getString("Username")=="Manager")&&ae.getActionCommand().equals("Add Employee"))
+        }else if(ae.getActionCommand().equals("Add Employee"))
         {
-           // new AddEmployee.setVisible(true);
+            new AddEmployee().setVisible(true);
         }
         else if(ae.getActionCommand().equals("Add Room"))
         {
-          // new AddRoom.setVisible(true);
+          // new AddRoom().setVisible(true);
         }
        }catch(Exception e){
        System.out.println(e);}
@@ -74,4 +75,7 @@ public class Dashboard extends JFrame implements ActionListener{
      {
          new Dashboard().setVisible(true);
      }
+
+   
+  
 }
