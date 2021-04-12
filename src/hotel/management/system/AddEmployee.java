@@ -39,6 +39,7 @@ public class AddEmployee extends JFrame implements ActionListener{
             Next.setBounds(200, 420, 150, 30);
             Next.setBackground(Color.BLACK);
             Next.setForeground(Color.WHITE);
+            Next.addActionListener(this);
             add(Next);
 			
             JLabel age = new JLabel("AGE");

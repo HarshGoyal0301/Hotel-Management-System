@@ -102,7 +102,7 @@ public class Reception extends JFrame {
 
         JButton btnCheckout = new JButton("Check Out");
         btnCheckout.addActionListener(new ActionListener() {
-            @Override
+            
             public void actionPerformed(ActionEvent e) {
                 CheckOut check;
                 try {
