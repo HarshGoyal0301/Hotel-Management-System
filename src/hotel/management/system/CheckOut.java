@@ -90,15 +90,16 @@ public class CheckOut extends JFrame{
                 l2.addActionListener(new ActionListener(){
                     
                     public void actionPerformed(ActionEvent ae){
-                       // System.out.println("Hi");
+                       
                         try{
+                            
                             
                             Conn c = new Conn();
                             String aadhar = c1.getSelectedItem();
                             ResultSet rs = c.s.executeQuery("select * from customer where aadhar = "+aadhar);
                             
                             if(rs.next()){
-                                System.out.println("clicked");
+                              
                                 t1.setText(rs.getString("room_no"));    
                             }
                         }catch(Exception e){System.out.println(e); }
@@ -132,14 +133,39 @@ public class CheckOut extends JFrame{
 				Conn c = new Conn();
 
 	    		try{
-	    			
-	    			
+                            
+                             String total = "";
+                             String paid="";
+                                
+                                ResultSet rs2 = c.s.executeQuery("select * from room where room_number = "+s1);
+                           
+                                while(rs2.next()){
+                                    total = rs2.getString("price"); 
+                                    
+                                    
+                                }
+                                 ResultSet rs3=c.s.executeQuery("Select * from customer where room_no = "+s1);
+                                while(rs3.next()){
+                                    paid=rs3.getString("amount_deposit");
+                                }
+                               
+                                int pending = Integer.parseInt(total)- Integer.parseInt(paid);
+                                
+	    			  if(pending==0){
 	    			c.s.executeUpdate(deleteSQL);
 	    			c.s.executeUpdate(q2);
 	    			JOptionPane.showMessageDialog(null, "Check Out Successful");
 	    			new Reception().setVisible(true);
                                 setVisible(false);
-	    		}catch(SQLException e1){
+                                  }
+                                  else {
+                                      JOptionPane.showMessageDialog(null, "Amount Due ");
+                                      new Reception().setVisible(true);
+                                      setVisible(false);
+                                      
+                                  }
+                                  
+	    		}catch(Exception e1){
 	    			System.out.println(e1.getMessage());
 	    		}
 			}

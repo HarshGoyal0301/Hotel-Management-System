@@ -63,7 +63,7 @@ public class AddEmployee extends JFrame implements ActionListener{
 	
              female = new JRadioButton("FEMALE");
             female.setBackground(Color.WHITE);
-            female.setBounds(280, 120, 70, 27);
+            female.setBounds(280, 120, 100, 27);
             add(female);
             
             

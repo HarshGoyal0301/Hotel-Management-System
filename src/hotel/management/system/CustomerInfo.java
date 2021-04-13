@@ -94,7 +94,7 @@ public class CustomerInfo extends JFrame {
 		contentPane.add(btnLoadData);
 		
 		lblId = new JLabel("Aadhar ID");
-		lblId.setBounds(31, 11, 46, 14);
+		lblId.setBounds(31, 11, 76, 14);
 		contentPane.add(lblId);
                 
                 JLabel l1 = new JLabel("Number");

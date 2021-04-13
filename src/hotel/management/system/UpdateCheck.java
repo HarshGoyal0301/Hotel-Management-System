@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 
 public class UpdateCheck extends JFrame {
 	Connection Conn = null;
+        int amt_pen;
 	PreparedStatement pst = null;
 	private JPanel contentPane;
 	private JTextField txt_ID;
@@ -193,6 +194,7 @@ public class UpdateCheck extends JFrame {
                                 }
                                 String paid = txt_Time.getText();
                                 int pending = Integer.parseInt(total)- Integer.parseInt(paid);
+                                amt_pen=pending;
                                 
                                 txt_Payment.setText(Integer.toString(pending));
                                 
