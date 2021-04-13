@@ -53,19 +53,23 @@ public class Dashboard extends JFrame implements ActionListener{
        // String str="select username from login ";
         try{
             Conn c=new Conn();
-       //     ResultSet rs=c.s.executeQuery(str);
-       //(rs.getString("Username")=="Manager")&&
+        // Login login= new Login();
+            String username="";
+           // username=login.getname();
+           // ResultSet rs=c.s.executeQuery(str);
+      // (rs.getString("Username")=="Manager")&&
             
-        
+       // if(username.equals("manager")){ 
         if(ae.getActionCommand().equals("RECEPTION"))
         {
-            new Reception().setVisible(true);
             
-        }else if(ae.getActionCommand().equals("Add Employee"))
+            new Reception().setVisible(true);
+        }    
+        else if(username.equals("admin")&&ae.getActionCommand().equals("Add Employee"))
         {
             new AddEmployee().setVisible(true);
         }
-        else if(ae.getActionCommand().equals("Add Room"))
+        else if(username.equals("admin")&&ae.getActionCommand().equals("Add Room"))
         {
           new AddRoom().setVisible(true);
         }

@@ -9,6 +9,7 @@ public class Login extends JFrame implements ActionListener{
     JTextField t1;
     JPasswordField t2;
     JButton b1,b2;
+    public String name,uname;
     Login()
     {
         l1=new JLabel("Username");
@@ -52,13 +53,21 @@ public class Login extends JFrame implements ActionListener{
             String username=t1.getText();
             String password=t2.getText();
             Conn c=new Conn();
+            name=username;
             String str="select * from login where username= '"+username+"' and password='"+password+"'";
             try{
                ResultSet rs= c.s.executeQuery(str);
                if(rs.next())
+               { 
+                   if(username.equals("manager"))
+                   {new Reception().setVisible(true);
+                    this.setVisible(false);}
+               
+              else 
                {
                    new Dashboard().setVisible(true);
                    this.setVisible(false);
+               }
                }
                else {
                    JOptionPane.showMessageDialog(null,"Invalid Username or Password");
@@ -72,6 +81,10 @@ public class Login extends JFrame implements ActionListener{
         {
             System.exit(0);
         }
+    }
+    public String getname()
+    {
+        return this.name;
     }
     public static void main(String[] args)
     {
