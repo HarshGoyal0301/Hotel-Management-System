@@ -153,18 +153,26 @@ public class AddEmployee extends JFrame implements ActionListener{
                             
                     String s6 = (String)c1.getSelectedItem();
                     
+                if(name.equals("")||age.equals("")||salary.equals("")||phone.equals("")||aadhar.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Please enter all Details");
+                    }
+                 else{
                     try {
                         Conn c = new Conn();
+                       
                         String str = "INSERT INTO employee values( '"+name+"', '"+age+"', '"+gender+"','"+s6+"', '"+salary+"', '"+phone+"','"+aadhar+"')";
                         
                         c.s.executeUpdate(str);
                         JOptionPane.showMessageDialog(null,"Employee Added");
                         setVisible(false);
-                    
+                         
                     } catch (Exception e) {
                         e.printStackTrace();
         	    }
+                    }
 		}
+
            
 			
           

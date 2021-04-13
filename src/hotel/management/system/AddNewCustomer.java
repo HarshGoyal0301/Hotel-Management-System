@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import javax.swing.event.ChangeListener;
 public class AddNewCustomer extends JFrame {
     Connection conn = null;
     PreparedStatement pst = null;
@@ -160,6 +160,11 @@ public class AddNewCustomer extends JFrame {
                       String s6 = c1.getSelectedItem();
                     String s7 =  t5.getText();
                     String s8 =  t6.getText();
+                    if(s1.equals("")||s2.equals("")||s3.equals("")||s5.equals("")||s6.equals("")||s7.equals("")||s8.equals(""))
+                    {
+                        JOptionPane.showMessageDialog(null, "Please enter all Details");
+                    }
+                    else{
 
                     String q1 = "insert into customer values('"+s1+"','"+s2+"','"+s3+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"','"+s8+"')";
                     String q2 = "update room set available = 'Occupied' where room_number = "+s6;
@@ -175,6 +180,7 @@ public class AddNewCustomer extends JFrame {
                 } catch(NumberFormatException s) {
                     JOptionPane.showMessageDialog(null, "Please enter a valid number");
                 }
+            }
             }
         });
         btnNewButton.setBounds(100, 430, 120, 30);
