@@ -134,22 +134,18 @@ public class CheckOut extends JFrame{
 
 	    		try{
                             
-                             String total = "";
-                             String paid="";
+                             String amt_due = "";
+                             
                                 
-                                ResultSet rs2 = c.s.executeQuery("select * from room where room_number = "+s1);
+                                ResultSet rs2 = c.s.executeQuery("select * from customer where room_no = "+s1);
                            
                                 while(rs2.next()){
-                                    total = rs2.getString("price"); 
+                                    amt_due = rs2.getString("amount_due"); 
                                     
                                     
                                 }
-                                 ResultSet rs3=c.s.executeQuery("Select * from customer where room_no = "+s1);
-                                while(rs3.next()){
-                                    paid=rs3.getString("amount_deposit");
-                                }
-                               
-                                int pending = Integer.parseInt(total)- Integer.parseInt(paid);
+                                
+                                int pending = Integer.parseInt(amt_due);
                                 
 	    			  if(pending==0){
 	    			c.s.executeUpdate(deleteSQL);

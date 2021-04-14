@@ -185,16 +185,16 @@ public class UpdateCheck extends JFrame {
                             System.out.println(ee);}
                             
                             try{
-                                String total = "";
+                                String amt_due = "";
                                 Conn c  = new Conn();
-                                ResultSet rs2 = c.s.executeQuery("select * from room where room_number = "+txt_ID.getText());
+                                ResultSet rs2 = c.s.executeQuery("select * from customer where room_no = "+txt_ID.getText());
                                 while(rs2.next()){
-                                    total = rs2.getString("price"); 
+                                    amt_due = rs2.getString("amount_due"); 
                                     
                                 }
-                                String paid = txt_Time.getText();
-                                int pending = Integer.parseInt(total)- Integer.parseInt(paid);
-                                amt_pen=pending;
+                              
+                                int pending = Integer.parseInt(amt_due);
+                                
                                 
                                 txt_Payment.setText(Integer.toString(pending));
                                 

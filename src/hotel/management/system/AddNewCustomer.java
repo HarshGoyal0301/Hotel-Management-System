@@ -166,12 +166,33 @@ public class AddNewCustomer extends JFrame {
                     }
                     else{
 
-                    String q1 = "insert into customer values('"+s1+"','"+s2+"','"+s3+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"','"+s8+"')";
+                    String q1 = "insert into customer values('"+s1+"','"+s2+"','"+s3+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"','"+s8+"','"+s8+"')";
                     String q2 = "update room set available = 'Occupied' where room_number = "+s6;
-                   try {   Conn c = new Conn();
-                       c.s.executeUpdate(q1);
-                           c.s.executeUpdate(q2);
-
+                  
+                    
+                    
+                               String total = "";
+                             String paid="";
+                             String pen="";
+                              try {   Conn c = new Conn();   
+                                ResultSet rs2 = c.s.executeQuery("select * from room where room_number = "+s6);
+                           
+                                while(rs2.next()){
+                                    total = rs2.getString("price"); 
+                                    
+                                    
+                                }
+                                paid=s8;
+                               
+                                int pending = Integer.parseInt(total)- Integer.parseInt(paid);
+                                pen=Integer.toString(pending);
+                                String q3 = "update customer set amount_due = '"+pen+"'where room_no="+s6;
+                                
+                                
+                    
+                               c.s.executeUpdate(q1);
+                               c.s.executeUpdate(q2);
+                                 c.s.executeUpdate(q3);
                     JOptionPane.showMessageDialog(null, "Data Inserted Successfully");
                     new Reception().setVisible(true);
                     setVisible(false);
