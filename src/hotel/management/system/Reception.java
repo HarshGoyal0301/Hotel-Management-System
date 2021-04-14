@@ -155,12 +155,12 @@ public class Reception extends JFrame {
         btnRoomStatus.setForeground(Color.WHITE);
         contentPane.add(btnRoomStatus);
 
-      /*  JButton btnServices = new JButton("Services");
+       JButton btnServices = new JButton("Services");
         btnServices.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Services service = new Services();
+                    Service service = new Service();
                     service.setVisible(true);
                     setVisible(false);
                 } catch(Exception e1) {
@@ -172,7 +172,7 @@ public class Reception extends JFrame {
         btnServices.setBackground(Color.BLACK);
         btnServices.setForeground(Color.WHITE);
         contentPane.add(btnServices);
-      */
+     
 
         JButton btnSearchRoom = new JButton("Search Room");
         btnSearchRoom.addActionListener(new ActionListener() {

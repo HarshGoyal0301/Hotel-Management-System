@@ -130,15 +130,32 @@ public class UpdateCheck extends JFrame {
 			public void actionPerformed(ActionEvent ae) { 
                             try{
                                 Conn c = new Conn();
-                                
+                                String due="";
+                                String amt_dep="";
+                                int pending;
                                 String s1 = c1.getSelectedItem();
 				String s2 = txt_ID.getText(); //room_number;    
                                 String s3 = txt_Status.getText(); //name    
                                 String s4 = txt_Date.getText(); //status;    
                                 String s5 = txt_Time.getText(); //deposit    
-				
+                                ResultSet rs=c.s.executeQuery("select * from customer where aadhar="+s1);
+                                while(rs.next())
+                                {
+                                    due=rs.getString("amount_due");
+                                }
+                                ResultSet rs1=c.s.executeQuery("select * from customer where aadhar="+s1);
+                                while(rs1.next())
+                                {
+                                    amt_dep=rs1.getString("amount_deposit");
+                                }
+				   pending=Integer.parseInt(s5)-Integer.parseInt(amt_dep);
+                                  int amt_pen;
+                                  amt_pen=Integer.parseInt(due)-pending;
+                                   due=Integer.toString(amt_pen);
+                                   
                                 c.s.executeUpdate("update customer set room_no = '"+s2+"', name = '"+s3+"', checked_in = '"+s4+"', amount_deposit = '"+s5+"' where aadhar = '"+s1+"'");
-                                
+                                 c.s.executeUpdate("update customer set amount_due = '"+due+"' where aadhar = "+s1);
+
                                 JOptionPane.showMessageDialog(null, "Data Updated Successfully");
                                 new Reception().setVisible(true);
                                 setVisible(false);
@@ -194,8 +211,7 @@ public class UpdateCheck extends JFrame {
                                 }
                               
                                 int pending = Integer.parseInt(amt_due);
-                                
-                                
+                                                                
                                 txt_Payment.setText(Integer.toString(pending));
                                 
                             }catch(Exception ee){}
