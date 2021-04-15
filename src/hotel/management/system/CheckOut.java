@@ -128,6 +128,7 @@ public class CheckOut extends JFrame{
                                 String s1 = t1.getText();
 				String deleteSQL = "Delete from customer where aadhar = '"+id+"'";
                                 String q2 = "update room set available = 'Available' where room_number = "+s1;
+                                 String q3 = "update room set status = 'Cleaned' where room_number = "+s1;
                                 
                                 
 				Conn c = new Conn();
@@ -150,6 +151,7 @@ public class CheckOut extends JFrame{
 	    			  if(pending==0){
 	    			c.s.executeUpdate(deleteSQL);
 	    			c.s.executeUpdate(q2);
+                                c.s.executeUpdate(q3);
 	    			JOptionPane.showMessageDialog(null, "Check Out Successful");
 	    			new Reception().setVisible(true);
                                 setVisible(false);

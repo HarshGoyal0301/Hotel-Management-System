@@ -16,16 +16,16 @@ public class Reception extends JFrame {
 
     public Reception() {
 
-        setBounds(530, 200, 850, 470);
+        setBounds(530, 200, 820, 470);
         contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("hotel/management/system/icons/fourth.jpg"));
-        Image i3 = i1.getImage().getScaledInstance(500, 500, Image.SCALE_DEFAULT);
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("hotel/management/system/icons/reception.jpg"));
+        Image i3 = i1.getImage().getScaledInstance(700, 455, Image.SCALE_DEFAULT);
         ImageIcon i2 = new ImageIcon(i3);
         JLabel l1 = new JLabel(i2);
-        l1.setBounds(250, 30, 500, 470);
+        l1.setBounds(250, 20, 500, 400);
         add(l1);
 
         JButton btnNewCustomerForm = new JButton("New Customer Form");

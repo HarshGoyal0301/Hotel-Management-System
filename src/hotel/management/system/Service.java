@@ -43,7 +43,7 @@ public class Service extends JFrame {
      */
     public Service() throws SQLException {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(500, 200, 800, 500);
+        setBounds(500, 200, 650, 500);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);

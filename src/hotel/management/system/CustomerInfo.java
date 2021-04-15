@@ -94,19 +94,19 @@ public class CustomerInfo extends JFrame {
 		contentPane.add(btnLoadData);
 		
 		lblId = new JLabel("Aadhar ID");
-		lblId.setBounds(31, 11, 76, 14);
+		lblId.setBounds(15, 11, 76, 14);
 		contentPane.add(lblId);
                 
                 JLabel l1 = new JLabel("Number");
-		l1.setBounds(150, 11, 46, 14);
+		l1.setBounds(110, 11, 46, 14);
 		contentPane.add(l1);
 		
 		lblNewLabel = new JLabel("Name");
-		lblNewLabel.setBounds(270, 11, 65, 14);
+		lblNewLabel.setBounds(220, 11, 65, 14);
 		contentPane.add(lblNewLabel);
 		
 		lblGender = new JLabel("Gender");
-		lblGender.setBounds(360, 11, 46, 14);
+		lblGender.setBounds(310, 11, 46, 14);
 		contentPane.add(lblGender);
 		
 		table = new JTable();
@@ -114,20 +114,24 @@ public class CustomerInfo extends JFrame {
 		contentPane.add(table);
 		
 		lblCountry = new JLabel("Country");
-		lblCountry.setBounds(480, 11, 46, 14);
+		lblCountry.setBounds(410, 11, 46, 14);
 		contentPane.add(lblCountry);
 		
 		lblRoom = new JLabel("Room");
-		lblRoom.setBounds(600, 11, 46, 14);
+		lblRoom.setBounds(510, 11, 46, 14);
 		contentPane.add(lblRoom);
 		
-		lblStatus = new JLabel("Check-in Status");
-		lblStatus.setBounds(680, 11, 100, 14);
+		lblStatus = new JLabel("Check Status");
+		lblStatus.setBounds(610, 11, 100, 14);
 		contentPane.add(lblStatus);
 		
 		lblNewLabel_1 = new JLabel("Deposit");
-		lblNewLabel_1.setBounds(800, 11, 100, 14);
+		lblNewLabel_1.setBounds(710, 11, 100, 14);
 		contentPane.add(lblNewLabel_1);
+                
+              JLabel  lblNewLabel_2 = new JLabel("Due");
+		lblNewLabel_2.setBounds(810, 11, 100, 14);
+		contentPane.add(lblNewLabel_2);
                 
                 getContentPane().setBackground(Color.WHITE);
 	}
